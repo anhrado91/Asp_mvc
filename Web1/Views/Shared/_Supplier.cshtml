@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Supplier>
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-list-alt"></span>
+        <strong>Nhà cung cấp</strong>
+    </div>
+
+    <div class="list-group">
+        @foreach (var s in Model)
+        {
+            <a href="/Product/ListBySupplier/@s.Id" class="list-group-item">@s.Name</a>
+        }
+    </div>
+</div>

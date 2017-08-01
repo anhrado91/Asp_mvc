@@ -1,0 +1,75 @@
+﻿@model Product
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<div class="nn-detail">
+    <img class="col-sm-5" src="~/images/products/@Model.Image" />
+    <ul class="col-sm-7">
+        <li><label>Id</label>:@Model.Id</li>
+        <li><label>Name</label>: @Model.Name</li>
+        <li><label>Unit Price</label>: @Html.FormatValue(Model.UnitPrice, "{0:c}")</li>
+        <li><label>Unit Brief</label>: @Model.UnitBrief</li>
+        <li><label>Quantity</label>: @Model.Quantity</li>
+        <li><label>Discount</label>: @Html.FormatValue(Model.Discount, "{0:p}")</li>
+        <li><label>Product Date</label>: @Html.FormatValue(Model.ProductDate, "{0:dd-MM-yyyy}")</li>
+        <li><label>Category</label>: @Model.Category.NameVN</li>
+        <li><label>Supplier</label>: @Model.Supplier.Name</li>
+        <li><label>Available?</label>: @(Model.Available ? "Yes" : "No")</li>
+        <li><label>Latest?</label>: @(Model.Latest ? "Yes" : "No")</li>
+        <li><label>Special?</label>: @(Model.Special ? "Yes" : "No")</li>
+        <li><label>View Count</label>: @Model.Views</li>
+    </ul>
+    <div>@Model.Description</div>
+</div>
+<hr />
+<div class="nn-thumbnail">
+    <div>
+        <!-- Nav tabs-->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Cùng Loại</a>
+            </li>
+            <li role="presentation">
+                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Cùng Hãng</a>
+            </li>
+            <li role="presentation">
+                <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Đã Xem</a>
+            </li>
+        </ul>
+
+        <!--Tab panes-->
+        <div class="tab-content">
+            <!--Cùng loại-->
+            <div role="tabpanel" class="tab-pane active" id="home">
+                @foreach (var p in Model.Category.Products)
+                {
+                    <a href="/Product/Detail/@p.Id">
+
+                        <img src="~/images/products/@p.Image" />
+                    </a>
+                }
+            </div>
+            <!--Cùng Hãng-->
+            <div role="tabpanel" class="tab-pane" id="profile">
+                @foreach (var p in Model.Supplier.Products)
+                {
+                    <a href="/Product/Detail/@p.Id">
+
+                        <img src="~/images/products/@p.Image" />
+                    </a>
+                }
+            </div>
+            <!--Đã xem-->
+            <div role="tabpanel" class="tab-pane" id="messages">
+                @foreach (var p in ViewBag.ViewDetails)
+                {
+                    <a href="/Product/Detail/@p.Id">
+
+                        <img src="~/images/products/@p.Image" />
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

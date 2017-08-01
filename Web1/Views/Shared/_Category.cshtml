@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Category>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-th-list"></span>
+        <strong>Chủng loại</strong>
+    </div>
+
+    <div class="list-group">
+        @foreach (var c in Model)
+        {
+            <a href="/Product/ListByCategory/@c.Id" class="list-group-item">@c.NameVN</a>
+        }
+    </div>
+</div>

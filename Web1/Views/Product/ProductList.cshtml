@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewBag.Title = "ProductList";
+}
+
+@foreach (var p in Model)
+{
+    <div class="col-sm-4 nn-box">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @p.Name
+            </div>
+            <div class="panel-body">
+                <a href="/Product/Detail/@p.Id">
+                    <img src="~/images/products/@p.Image" />
+                </a>
+            </div>
+            <div class="panel-footer">
+                <div class="pull-right">
+                    <button class="btn btn-sm btn-primary">
+                        <span class="glyphicon glyphicon-heart"></span>
+                    </button>
+                    <button class="btn btn-sm btn-warning">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </button>
+                    <button class="btn btn-sm btn-danger" data-add-to-cart="@p.Id">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                    </button>
+                </div>
+                <span class="pull-left">@Html.FormatValue(@p.UnitPrice, "{0:c}")</span>
+            </div>
+
+            @if (p.Special)
+            {
+                <img src="~/images/special_icon.gif" />
+            }
+            else if (p.Discount > 0)
+            {
+                <img src="~/images/promo_icon.gif" />
+            }
+            else if (p.Latest)
+            {
+                <img src="~/images/new_icon.gif" />
+            }
+        </div>
+    </div>
+}

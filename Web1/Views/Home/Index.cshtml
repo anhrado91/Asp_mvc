@@ -1,0 +1,153 @@
+﻿@{
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<!--SLIDESHOW-->
+<div>
+    <!--Thư viện-->
+    <script src="~/Slideshow/js/modernizr.custom.63321.js"></script>
+    <script src="~/Slideshow/js/jquery.catslider.js"></script>
+    <link href="~/Slideshow/css/catslider.css" rel="stylesheet" />
+    <style>
+        .mi-slider {
+            height: 330px;
+        }
+
+            .mi-slider ul li img {
+                height: 200px;
+            }
+    </style>
+    <script>
+        $(function () {
+            showCatSlider('.mi-slider', 3000);
+        });
+    </script>
+    <!--/Thư viện-->
+
+
+    <div class="mi-slider">
+        @foreach (Supplier s in ViewBag.Suppliers)
+            {
+                var Items = s.Products.OrderBy(p => Guid.NewGuid())
+                    .Take(4)
+                    .ToList();
+                <ul>
+                    @foreach (var p in Items)
+                    {
+                        <li>
+                            <a href="/Product/Detail/@p.Id">
+                                <img src="~/images/products/@p.Image" />
+                                <h4>@p.UnitPrice</h4>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
+            <nav>
+                @foreach (Supplier s in ViewBag.Suppliers)
+                {
+                    <a href="#">@s.Name</a>
+                }
+            </nav>
+
+        #<!-- #region Dictionary -->
+        @*@{ var LSupplier = (Dictionary<int, List<Product>>)ViewBag.Suppliers;}
+        @foreach (var s in LSupplier)
+        {
+            <ul>
+                @if (s.Value.Count !=0 )
+                {
+                    foreach (var item in s.Value)
+                    {
+                        <li>
+                            <a href="/Product/Detail/">
+                                <img src="~/images/products/" />
+                                <h4>@item.Name</h4>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        }
+        <nav>
+            <a href="#"></a>
+        </nav>*@
+<!-- #endregion -->
+
+    </div>
+</div>
+<!--/SLIDESHOW-->
+<!--Specail Items -->
+<div>
+    @{  var LSpecails = (List<Product>)ViewBag.Specials; }
+    @foreach (var p in LSpecails)
+    {
+        <div class="col-sm-3 nn-box">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @p.Name
+                </div>
+                <div class="panel-body">
+                    <a href="/Product/Detail/@p.Id">
+                        <img src="~/images/products/@p.Image" />
+                    </a>
+                </div>
+                <div class="panel-footer">
+                    <div class="pull-right">
+                        <button class="btn btn-sm btn-primary">
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </button>
+                        <button class="btn btn-sm btn-warning">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </button>
+                        <button class="btn btn-sm btn-danger" data-add-to-cart="@p.Id">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                        </button>
+                    </div>
+                    <span class="pull-left">@Html.FormatValue(@p.UnitPrice, "{0:c}")</span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!--/Specail Items -->
+
+<!--Category-->
+<style>
+    .nn-category{
+        font-variant:small-caps;
+    }
+    .nn-category li{
+        line-height:28px;
+    }
+    .nn-category lengend{
+        font-weight:bolder;
+    }
+</style>
+<div>
+    @foreach(Category c in ViewBag.Categories)
+    {
+        var Items = c.Products.OrderBy(p => Guid.NewGuid())
+            .Take(5)
+            .ToList();
+        <div class="col-sm-4 nn-category">
+            <fieldset>
+                <legend>@c.NameVN</legend>
+                <ul class="list-unstyled">
+                    @foreach(var p in Items)
+                    {
+                        <li>
+                            <a href="/Product/Detail/@p.Id">
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                                @p.Name
+                            </a>
+                        </li>
+
+                    }
+                </ul>
+            </fieldset>
+        </div>
+    }
+</div>
+<!--/Category-->

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Mall</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</head>
+<body>
+    <div class="container">
+        <header class="nn-header row">
+            <div class="nn-company">
+                <h1>Online Shopping mall</h1>
+                <h5>The center point of the professional programming</h5>
+            </div>
+            <img class="pull-right" src="/images/header-object.png" />
+        </header>
+
+        <div class="navbar navbar-inverse row">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <!--Menu-->
+                @Html.Partial("_Menu")
+                <!--Menu-->
+            </div>
+        </div>
+
+        <div class="nn-sheet row">
+            <article class="col-sm-12">
+                <div class="nn-body">
+                    @RenderBody()
+                </div>
+            </article>
+        </div>
+        <footer class="panel panel-default row">
+            <div class="panel-heading text-center">
+                <p>ARD &copy; 2017. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

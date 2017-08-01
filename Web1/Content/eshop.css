@@ -1,0 +1,114 @@
+﻿/*--HEADER--*/
+
+.nn-header{
+    position:relative;
+    height:200px;
+}
+
+.nn-company{
+    position:absolute;
+    bottom:20px;
+    font-variant:small-caps;
+}
+
+.nn-company>h1{
+    font-family:Impact;
+    font-size:50px;
+    color:white;
+    letter-spacing: 0.3px;
+    text-shadow:0 0 2px black;
+    padding-bottom:0px;
+    border-bottom:1px dotted gray;
+    margin:0px;
+}
+.nn-company>h5{
+	margin-top:5px;
+    letter-spacing: 0.5px;
+}
+
+/*--BODY--*/
+
+.nn-sheet{
+    box-shadow:0 0 1px lightgray;
+    border-radius:5px;
+    padding:5px;
+    position:relative;
+    top:-10px;
+}
+
+.nn-sheet>article.col-sm-9, .nn-sheet>aside.col-sm-3{
+	padding: 5px;
+}
+
+/*--ASIDE BOX--*/
+
+.nn-cart{
+	margin-top: 5px;
+}
+
+.nn-cart ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    font-variant: small-caps;
+}
+
+.panel-heading strong{
+	font-variant: small-caps;
+	font-size: larger;
+	text-shadow:0 0 2px darkgray;
+}
+
+/*--product list--*/
+.nn-box{
+    text-align:center;
+    padding:5px;
+    font-variant:small-caps;
+    font-size:smaller;
+}
+.nn-box .panel-body img{
+    height:150px;
+    max-width:96%;
+}
+.nn-box .panel-footer{
+    height:50px;
+}
+.nn-box .panel-footer .pull-left{ /*--UnitPrice--*/
+    font-family:Impact;
+    font-size:20px;
+    color:white;
+    text-shadow:0 0 2px red;
+}
+
+.nn-box .panel>img{
+    position:absolute;
+    top:5px;
+    right:5px;
+}
+
+/*--product detail--*/
+.nn-detail>img{
+    max-height:320px;
+}
+
+.nn-detail label{
+    width:100px;
+    font-variant:small-caps;
+}
+
+.nn-thumbnail img{
+    width:60px;
+    height:60px;
+    margin:5px;
+    border-radius:5px;
+    box-shadow:0 0 2px blue;
+    padding:5px;
+}
+
+.nn-thumbnail img:hover{
+    box-shadow:0 0 5px red;
+}
+
+.nn-thumbnail a{
+    text-decoration:none;
+}
